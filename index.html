@@ -7,37 +7,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIKE REWARDS</title>
-</head>
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("05e89d6d-61a2-426a-9177-a7abab1d65e1.jpeg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
-<body>
-    <img src="msg-1002086312575-9386.jpg" alt="Logo">
-    <label for="ethAddressInput">Enter Pulse Address :</label>
-    <input type="text" id="ethAddressInput" placeholder="0x..." style="width: 400px;">
-    <div id="embedContainer">
-        <iframe src="https://dexscreener.com/pulsechain/0x6547F88d725201D3119c5BBb6045A4059F5D2181?embed=1&theme=dark" style="width: 100%; height: 100vh;"></iframe>
-    </div>
-    <label for="tokenSelect">Select Token:</label>
-    <select id="tokenSelect" onchange="updateSelectedToken()">
-        <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
-    </select>
-    <div id="selectedToken">Selected Token: </div>
-    <button onclick="fetchData()">Total Rewards Earned</button>
-    <div id="result-box">
-        <div id="response1"></div>
-    </div>
-    <div id="info-box">
-        STEP : 1 Enter your wallet address containing $MIKE tokens.
-        <br> STEP : 2 Select token from list.
-        <br> STEP : 3 Hit "calculate" button.
-        <br>🚴‍♂️ Beta tool (may experience glitches). Thank you for co-operating.
-    </div>
-    <div class="footer">
-        <div class="social-icons">
-            <a href="https://t.me/MonstersINCtoken" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://twitter.com/MONSTERincToken" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-    </div>
+        img {
+            width: 350px;
+            height: auto;
+            margin-bottom: 20px;
+        }
 
+        label {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 300px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+            width: 300px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        #result-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #info-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+        #selectedToken {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .footer {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            }
+            .social-icons a {
+            color: white;
+            margin: 10px; /* Increased the margin for spacing */
+            font-size: 70px; /* Increased the font size to make icons bigger */
+            text-decoration: none;
+            }
+
+            .social-icons a:hover {
+            color: #00aaff;
+        }
+</style>
+    
     <script>
         async function fetchData() {
             try {
@@ -76,7 +138,7 @@
             const etherValue = parseFloat(value) / 1e18;
             return etherValue.toLocaleString('en-US', { maximumFractionDigits: 18 }) + ` ${rewardName}`;
         }
-
+        
         function updateSelectedToken() {
             const selectElement = document.getElementById('tokenSelect');
             const selectedOption = selectElement.selectedOptions[0];
@@ -90,6 +152,36 @@
             updateSelectedToken();
         });
     </script>
+</head>
+
+<body>
+    <img src="msg-1002086312575-9386.jpg" alt="Logo">
+    <label for="ethAddressInput">Enter Pulse Address :</label>
+    <input type="text" id="ethAddressInput" placeholder="0x..." style="width: 400px;">
+    <div id="embedContainer">
+        <iframe src="https://dexscreener.com/pulsechain/0x6547F88d725201D3119c5BBb6045A4059F5D2181?embed=1&theme=dark" width="100%" height="100%"></iframe>
+    </div>
+    <label for="tokenSelect">Select Token:</label>
+    <select id="tokenSelect" onchange="updateSelectedToken()">
+        <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
+    </select>
+    <div id="selectedToken">Selected Token: </div>
+    <button onclick="fetchData()">Total Rewards Earned</button>
+    <div id="result-box">
+        <div id="response1"></div>
+    </div>
+    <div id="info-box">
+        STEP : 1 Enter your wallet address containing $MIKE tokens.
+        <br> STEP : 2 Select token from list.
+        <br> STEP : 3 Hit "calculate" button.
+        <br>🚴‍♂️ Beta tool (may experience glitches). Thank you for co-operating.
+    </div>
+    <div class="footer">
+        <div class="social-icons">
+            <a href="https://t.me/MonstersINCtoken" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://twitter.com/MONSTERincToken" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
 </body>
 
 </html>
