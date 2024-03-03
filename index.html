@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,10 +125,10 @@
                 console.log(responseData);
 
                 const formattedValue1 = formatNumberInEther(responseData.result.output[1].value, selectedOption);
-              //  const formattedValue2 = formatNumberInEther(responseData.result.output[0].value, selectedOption);
+                //  const formattedValue2 = formatNumberInEther(responseData.result.output[0].value, selectedOption);
                 document.getElementById('response1').innerText = `Reward : ${formattedValue1}`;
-               // document.getElementById('response2').innerText = `RewardClaimed : ${formattedValue2}`;
-              // <div id="response2"></div>
+                // document.getElementById('response2').innerText = `RewardClaimed : ${formattedValue2}`;
+                // <div id="response2"></div>
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -156,39 +156,33 @@
 
 <body>
     <img src="msg-1002086312575-9386.jpg" alt="Logo">
-        <div id="embedContainer">
-  <iframe src="https://dexscreener.com/pulsechain/0x6547F88d725201D3119c5BBb6045A4059F5D2181?embed=1&theme=dark"></iframe>
-        </div>
-        </div>
     <label for="ethAddressInput">Enter Pulse Address :</label>
     <input type="text" id="ethAddressInput" placeholder="0x..." style="width: 400px;">
-
+    <div id="embedContainer">
+        <iframe src="https://dexscreener.com/pulsechain/0x6547F88d725201D3119c5BBb6045A4059F5D2181?embed=1&theme=dark" width="100%" height="100%"></iframe>
+    </div>
     <label for="tokenSelect">Select Token:</label>
-        
-<div id="embedContainer">
-    <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style><div id="dexscreener-embed"><iframe src="https://dexscreener.com/pulsechain/0x6547F88d725201D3119c5BBb6045A4059F5D2181?embed=1&theme=dark"></iframe></div>
-</div>
-<select id="tokenSelect" onchange="updateSelectedToken()">
-    <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
-</select>
-        
+    <select id="tokenSelect" onchange="updateSelectedToken()">
+        <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
+    </select>
     <div id="selectedToken">Selected Token: </div>
     <button onclick="fetchData()">Total Rewards Earned</button>
     <div id="result-box">
         <div id="response1"></div>
-
     </div>
-      <div id="info-box">
-              STEP : 1 Enter your wallet address containing $MIKE tokens.
-         <br> STEP : 2 Select token from list.
-         <br> STEP : 3 Hit "calculate" button.
-         <br>🚴‍♂️ Beta tool (may experience glitches). Thank you for co-operating.
+    <div id="info-box">
+        STEP : 1 Enter your wallet address containing $MIKE tokens.
+        <br> STEP : 2 Hit "calculate" button.
+        <br>🚴‍♂️ Beta tool (may experience glitches). Thank you for co-operating.
+        <br>This website was brought to you for free, if you want to make a donation please use the address below.
+        <br>0x00D898Eb7EDF394536731c1812cb32734ebFDE69
     </div>
-        <div class="footer">
+    <div class="footer">
         <div class="social-icons">
-          <a href="https://t.me/MonstersINCtoken" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a href="https://twitter.com/MONSTERincToken" target="_blank"><i class="fab fa-twitter"></i></a>
-          </div></div>
+            <a href="https://t.me/MonstersINCtoken" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://twitter.com/MONSTERincToken" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
 </body>
 
 </html>
