@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikes Monsters Inc REWARDS</title>
+    <title>MIKE REWARDS</title>
     <style>
         html, body {
             overflow: hidden;
@@ -161,11 +161,19 @@
     <input type="text" id="ethAddressInput" placeholder="0x..." style="width: 400px;">
 
     <label for="tokenSelect">Select Token:</label>
+        
+<div id="embedContainer">
+    <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style><div id="dexscreener-embed"><iframe src="https://dexscreener.com/pulsechain/0x6547F88d725201D3119c5BBb6045A4059F5D2181?embed=1&theme=dark"></iframe></div>
+</div>
+<select id="tokenSelect" onchange="updateSelectedToken()">
+    <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
+</select>
+
     <select id="tokenSelect" onchange="updateSelectedToken()">
         <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
     </select>
     <div id="selectedToken">Selected Token: </div>
-    <button onclick="fetchData()">Calculate</button>
+    <button onclick="fetchData()">Total Rewards Earned</button>
     <div id="result-box">
         <div id="response1"></div>
 
