@@ -1,188 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIKE REWARDS</title>
+    <title>Blubbee Memecoin</title>
     <style>
-        html, body {
-            overflow: hidden;
-        }
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url("05e89d6d-61a2-426a-9177-a7abab1d65e1.jpeg");
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            background: linear-gradient(135deg, #0099ff, #0066ff);
+            color: #fff;
+            line-height: 1.6;
         }
-
-        img {
-            width: 350px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        label {
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        select {
-            width: 300px;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        input {
-            width: 300px;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        button {
-            margin-top: 10px;
-        }
-
-        #result-box {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        #info-box {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            color: green;
-            font-weight: bold;
-        }
-        #selectedToken {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .footer {
-            bottom: 0;
-            left: 0;
-            width: 100%;
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             text-align: center;
-            color: white;
-            }
-            .social-icons a {
-            color: white;
-            margin: 10px; /* Increased the margin for spacing */
-            font-size: 70px; /* Increased the font size to make icons bigger */
+        }
+        .whale-img {
+            width: 200px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        h1 {
+            font-size: 42px;
+            margin-top: 20px;
+            color: #ffcc00;
+        }
+        p {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        .telegram-link a {
+            color: #ffcc00;
             text-decoration: none;
-            }
-
-            .social-icons a:hover {
-            color: #00aaff;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
-</style>
-    
-    <script>
-        async function fetchData() {
-            try {
-                const ethAddress = document.getElementById('ethAddressInput').value;
-                const contractAddress = document.getElementById('tokenSelect').value;
-                const selectedOption = document.getElementById('tokenSelect').selectedOptions[0].text.split(' - ')[1];
-
-                const payload = {
-                    args: [ethAddress],
-                    method_id: 'aceac856',
-                    contract_type: 'regular'
-                };
-
-                const response = await fetch(`https://api.scan.pulsechain.com/api/v2/smart-contracts/${contractAddress}/query-read-method`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                });
-
-                const responseData = await response.json();
-                console.log(responseData);
-
-                const formattedValue1 = formatNumberInEther(responseData.result.output[1].value, selectedOption);
-                //  const formattedValue2 = formatNumberInEther(responseData.result.output[0].value, selectedOption);
-                document.getElementById('response1').innerText = `Reward : ${formattedValue1}`;
-                // document.getElementById('response2').innerText = `RewardClaimed : ${formattedValue2}`;
-                // <div id="response2"></div>
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+        .telegram-link a:hover {
+            color: #ff9900;
+            text-decoration: underline;
         }
-
-        function formatNumberInEther(value, rewardName) {
-            const etherValue = parseFloat(value) / 1e18;
-            return etherValue.toLocaleString('en-US', { maximumFractionDigits: 18 }) + ` ${rewardName}`;
-        }
-        
-        function updateSelectedToken() {
-            const selectElement = document.getElementById('tokenSelect');
-            const selectedOption = selectElement.selectedOptions[0];
-            const selectedTokenValue = selectedOption.value;
-            const selectedTokenText = selectedOption.text;
-
-            document.getElementById('selectedToken').innerText = `Selected Token: ${selectedTokenText} - ${selectedTokenValue}`;
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            updateSelectedToken();
-        });
-    </script>
+    </style>
 </head>
-
 <body>
-    <img src="msg-1002086312575-9386.jpg" alt="Logo">
-    <div id="info-box">
-        This website will show you how many INC tokens you have received just from HODLING $MIKE
-    </div>
-    <label for="ethAddressInput">Enter Pulse Address :</label>
-    <input type="text" id="ethAddressInput" placeholder="0x..." style="width: 400px;">
-    <div id="embedContainer"></div>
-    <label for="tokenSelect">Select Token:</label>
-    <select id="tokenSelect" onchange="updateSelectedToken()">
-        <option value="0xa8DCD0EB29f6F918289b5C14634C1B5F443Af826">💥 MIKE - INC Rewards</option>
-    </select>
-    <div id="selectedToken">Selected Token: </div>
-    <button onclick="fetchData()">Total Rewards Earned</button>
-    <div id="result-box">
-        <div id="response1"></div>
-    </div>
-    <div id="info-box">
-        STEP : 1 Enter your wallet address containing $MIKE tokens.
-        <br> STEP : 2 Hit "calculate" button.
-        <br>🚴‍♂️ Beta tool (may experience glitches). Thank you for co-operating.
-        <br> This site was brought to you for free by a bullish community member.
-    </div>
-    <div class="footer">
-        <div class="social-icons">
-            <a href="https://t.me/MonstersINCtoken" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://twitter.com/MONSTERincToken" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-    </div>
-</body>
 
+<div class="container">
+    <img class="whale-img" src="https://emojicdn.elk.sh/🐋" alt="Whale Emoji">
+    <h1>Welcome to Blubbee Memecoin</h1>
+    <p>🚀 Get ready for the adventure of a lifetime! Dive into the thrilling world of Blubbee Memecoin as we embark on an epic journey to the moon and beyond!</p>
+    <p>🐳 Meet Blubbee, the magnificent Orca of Pulsechain. Fueled by pDai, Blubbee's treasure-filled 💩 promises incredible riches for all who hold its token!</p>
+    <p>🌟 Blubbee isn't just a coin - it's a community, a movement towards financial freedom. Together, we soar to new heights!</p>
+    <p>💰 With pDai set to skyrocket 10,000,000x, investing in Blubbee is your ticket to unimaginable wealth. Don't miss out - join us now and let's make history together!</p>
+    <div class="telegram-link">
+        <a href="https://t.me/Blubbee" target="_blank">📣 Join our Telegram group for updates and discussions</a>
+    </div>
+</div>
+
+</body>
 </html>
